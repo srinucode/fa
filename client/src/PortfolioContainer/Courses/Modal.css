@@ -1,0 +1,151 @@
+/* === OVERLAY === */
+.__app-modal-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(2px);
+  z-index: 2147483647;
+  overflow: hidden; /* lock background */
+  padding: 1rem;
+}
+
+/* === MODAL BOX === */
+.__app-modal-content {
+  position: relative;
+  background: #fff;
+  border-radius: 16px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  animation: modalIn 0.25s ease-out;
+  z-index: 2147483648;
+  transform-origin: center;
+
+  /* ✅ Allow scrolling inside modal */
+  max-height: 90vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+/* Subtle custom scrollbar for webkit browsers */
+.__app-modal-content::-webkit-scrollbar {
+  width: 6px;
+}
+.__app-modal-content::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+}
+.__app-modal-content::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* === CLOSE ICON === */
+.__app-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  border: none;
+  background: transparent;
+  font-size: 1.5rem;
+  color: #333;
+  cursor: pointer;
+}
+
+/* === FORM === */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+.contact-form label {
+  margin-top: 0.6rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.contact-form input,
+.contact-form textarea {
+  margin-top: 0.3rem;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  resize: vertical;
+}
+
+/* === BUTTONS === */
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 1rem;
+}
+
+.submit-btn,
+.close-btn {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Send button */
+.submit-btn {
+  background-color: #007bff;
+  color: white;
+}
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Close button */
+.close-btn {
+  background-color: #e0e0e0;
+  color: #333;
+}
+.close-btn:hover {
+  background-color: #c2c2c2;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .__app-modal-content {
+    padding: 1.5rem;
+    max-width: 90%;
+    border-radius: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .__app-modal-content {
+    padding: 1rem;
+    width: 100%;
+    max-width: 95%;
+    font-size: 0.95rem;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+}
+
+/* === ANIMATION === */
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

@@ -3,6 +3,7 @@ import express from 'express';
 import path from 'path';
 import cors from 'cors';
 import contactRoute from './route/contactRoute.js';
+import enrollRoute from './route/enrollRoute.js';
 import { fileURLToPath } from 'url';
 dotenv.config();
 
@@ -20,6 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 app.use('/', contactRoute);
+app.use('/', enrollRoute);
 
 if (process.env.NODE_ENV === 'production') {
   // Serve static files from the React app
